@@ -1,0 +1,11 @@
+set terminal pdf
+set output "1.pdf"
+set title "saller"
+set xlable ""
+set ylable ""
+plot "mydata.txt" using 1:2 with lines title "speed km/h"
+
+plot "mydata.txt" using 2:xtic(1) with line title "AQI Last Month", \
+     "" using 3 with linespoints title "AQI Current Month"
+
+gnuplot text.plt
