@@ -1,0 +1,53 @@
+cp examples/tutorial.first.cc scratch/
+
+#include "ns3/netanim-module.h"
+
+//For ascii trace
+AsciiTraceHelper ascii;
+pointToPoint.EnableAsciiAll(ascii.CreateFileStream("512.tr"));
+
+//NetAnim
+AnimationInterface anim("p2p.xml");
+
+    Simulator::Run();
+    Simulator::Destroy();
+    return 0;
+
+
+cd ns-allinone-3.43/ns-3.43
+./ns3 run scratch/first.cc
+
+
+cd nettanim 3.109
+./NetAnim
+
+
+cd transmetrics-1.4.0
+java -jar transmetrics.jar
+
+
+
+////////////////////
+
+set terminal pdf
+set output "salary.pdf"
+set title "Employee data"
+set xlabel "No of Days"
+set ylabel "Speed"
+plot "mydata.txt" using 1:2 with line title "speed Km/h" lw 2 
+
+
+
+set terminal pdf
+set output "city_aqi.pdf"
+set title "City-wise AQI Comparison"
+set xlabel "City"
+set ylabel "AQI Levels"
+set xtics rotate
+plot "mydata.txt" using 2:xtic(1) with line title "AQI Last Month", \
+     "" using 3 with linespoints title "AQI Current Month"
+
+gnulplot mygnucode.plt
+
+
+
